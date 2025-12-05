@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>YouTube Video Editor - 2015</title>
+    <link rel="stylesheet" href="styles2015.css?v=4">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="yt-editor">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="top-bar-left">
+                <div class="logo">YouTube</div>
+                <span class="separator">|</span>
+                <div class="title">Video Editor</div>
+            </div>
+            <div class="top-bar-right">
+                <button class="btn-save">Save draft</button>
+                <button class="btn-publish">Publish</button>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content-wrapper">
+            <!-- Left Sidebar -->
+            <div class="sidebar-left">
+                <div class="sidebar-section">
+                    <h4>Upload video</h4>
+                    <div class="upload-box">
+                        <svg viewBox="0 0 24 24" width="32" height="32">
+                            <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" fill="#999"/>
+                        </svg>
+                        <p>Click to upload or drag video</p>
+                        <input type="file" id="videoUpload" accept="video/*">
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Your videos</h4>
+                    <div class="video-list">
+                        <div class="video-item">
+                            <div class="video-thumb">1</div>
+                            <div class="video-info">
+                                <p class="video-name">Sample Clip 1</p>
+                                <p class="video-duration">5 sec</p>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumb">2</div>
+                            <div class="video-info">
+                                <p class="video-name">Sample Clip 2</p>
+                                <p class="video-duration">4 sec</p>
+                            </div>
+                        </div>
+                        <div class="video-item">
+                            <div class="video-thumb">3</div>
+                            <div class="video-info">
+                                <p class="video-name">Background Music</p>
+                                <p class="video-duration">9 sec</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Transitions</h4>
+                    <div class="effects-list">
+                        <div class="effect-item">Fade</div>
+                        <div class="effect-item">Slide</div>
+                        <div class="effect-item">Dissolve</div>
+                        <div class="effect-item">Cut</div>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Effects</h4>
+                    <div class="effects-list">
+                        <div class="effect-item">Brightness</div>
+                        <div class="effect-item">Contrast</div>
+                        <div class="effect-item">Saturation</div>
+                        <div class="effect-item">Blur</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center - Editor -->
+            <div class="editor-center">
+                <!-- Preview -->
+                <div class="preview-section">
+                    <div class="preview-window">
+                        <video id="previewVideo" controls>
+                            <source src="" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="preview-controls">
+                        <button class="control-btn" title="Rewind">⏮</button>
+                        <button class="control-btn" title="Fast Backward">⏪</button>
+                        <button class="control-btn" id="playBtn" title="Play">▶</button>
+                        <button class="control-btn" title="Fast Forward">⏩</button>
+                        <button class="control-btn" title="Forward">⏭</button>
+                    </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Timeline -->
+                <div class="timeline-section">
+                    <div class="timeline-header">
+                        <h4>Timeline</h4>
+                        <div class="timeline-zoom">
+                            <button class="zoom-btn">-</button>
+                            <button class="zoom-btn">+</button>
+                        </div>
+                    </div>
+                    <div class="timeline-container">
+                        <div class="timeline-ruler">
+                            <div class="marker">0</div>
+                            <div class="marker">5</div>
+                            <div class="marker">10</div>
+                            <div class="marker">15</div>
+                            <div class="marker">20</div>
+                            <div class="marker">25</div>
+                            <div class="marker">30</div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="track-label">Video</div>
+                            <div class="track-content" id="videoTrack">
+                                <div class="clip" data-start="0" data-duration="5">Clip 1</div>
+                                <div class="clip" data-start="5" data-duration="4">Clip 2</div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="track-label">Audio</div>
+                            <div class="track-content audio" id="audioTrack">
+                                <div class="audio-clip" data-start="0" data-duration="9">Music</div>
+                            </div>
+                        </div>
+                        <div class="timeline-track">
+                            <div class="track-label">Text</div>
+                            <div class="track-content text" id="textTrack">
+                                <div class="text-clip" data-start="2" data-duration="3">Title</div>
+                            </div>
+                        </div>
+                        <div class="playhead"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar-right">
+                <div class="sidebar-section">
+                    <h4>Video details</h4>
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" value="My Video" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Clip settings</h4>
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input type="text" value="5.0s" readonly />
+                    </div>
+                    <div class="form-group">
+                        <label>Speed</label>
+                        <input type="range" min="0.25" max="2" step="0.25" value="1" />
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h4>Options</h4>
+                    <button class="options-btn">Advanced</button>
+                    <button class="options-btn">More settings</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script2015.js?v=4"></script>
+</body>
+</html>
